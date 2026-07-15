@@ -1,0 +1,2 @@
+"""Shopify data generator package."""
+

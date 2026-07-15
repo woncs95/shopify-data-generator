@@ -12,7 +12,7 @@ $Arguments = @(
     "-m",
     "streamlit",
     "run",
-    "shopify_registration_app.py",
+    "app\shopify_registration_app.py",
     "--global.developmentMode=false",
     "--server.port",
     "8501",

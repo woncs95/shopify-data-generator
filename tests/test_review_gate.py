@@ -2,7 +2,7 @@ import json
 import unittest
 from pathlib import Path
 
-import review_gate
+from shopify_data_generator import review_gate
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class ReviewGateTests(unittest.TestCase):
     def test_report_summary_for_reviews_fixture(self):
-        with (ROOT / "reviews.json").open(encoding="utf-8") as f:
+        with (ROOT / "data" / "reviews.json").open(encoding="utf-8") as f:
             reviews = json.load(f)
 
         report = review_gate.run_report(reviews)

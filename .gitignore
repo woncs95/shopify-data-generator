@@ -8,6 +8,7 @@ __pycache__/
 *.py[cod]
 *.log
 streamlit.*.log
+runtime/
 outputs/
 last_bulk_upload_results.json
 last_registration_result.json
@@ -17,6 +18,11 @@ shopify_product_catalog.csv
 shopify_product_metafield_definitions.csv
 shopify_product_tags.csv
 shopify_registration_context.json
+shopify_product_column_names.csv
+shopify_product_field_details.csv
+shopify_product_nested_fields.csv
+shopify_product_queryable_paths.csv
+shopify_product_enum_values.csv
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
