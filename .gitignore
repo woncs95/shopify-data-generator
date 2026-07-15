@@ -4,6 +4,7 @@
 .streamlit_deps/
 .venv/
 venv/
+infra/searxng/config/settings.yml
 __pycache__/
 *.py[cod]
 *.log
