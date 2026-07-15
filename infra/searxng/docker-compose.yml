@@ -1,0 +1,13 @@
+services:
+  searxng:
+    image: ghcr.io/searxng/searxng:latest
+    container_name: shopify-product-searxng
+    restart: unless-stopped
+    ports:
+      - "8888:8080"
+    volumes:
+      - ./config:/etc/searxng:rw
+      - ./data:/var/cache/searxng:rw
+    environment:
+      - BASE_URL=http://localhost:8888/
+      - INSTANCE_NAME=Shopify Product Research

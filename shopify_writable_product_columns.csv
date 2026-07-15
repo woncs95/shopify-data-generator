@@ -1,0 +1,122 @@
+﻿input_object,column_name,csv_header_suggestion,graphQL_type,named_type,type_kind,default_value,description
+ProductCreateInput,category,ProductCreateInput.category,ID,ID,SCALAR,,"The ID of the [category](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17)
+that's associated with the product."
+ProductCreateInput,claimOwnership,ProductCreateInput.claimOwnership,ProductClaimOwnershipInput,ProductClaimOwnershipInput,INPUT_OBJECT,,"The input field to enable an app to provide additional product features.
+For example, you can specify
+[`bundles: true`](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/ProductClaimOwnershipInput#field-bundles)
+in the `claimOwnership` field to let an app add a
+[product configuration extension](https://shopify.dev/docs/apps/build/product-merchandising/bundles/product-configuration-extension/add-merchant-config-ui)."
+ProductCreateInput,collectionsToJoin,ProductCreateInput.collectionsToJoin,[ID!],ID,SCALAR,,A list of collection IDs to associate with the product.
+ProductCreateInput,combinedListingRole,ProductCreateInput.combinedListingRole,CombinedListingsRole,CombinedListingsRole,ENUM,,The role of the product in a [combined listing](https://shopify.dev/apps/build/product-merchandising/combined-listings).
+ProductCreateInput,descriptionHtml,ProductCreateInput.descriptionHtml,String,String,SCALAR,,"The description of the product, with HTML tags.
+For example, the description might include bold `<strong></strong>` and italic `<i></i>` text."
+ProductCreateInput,giftCard,ProductCreateInput.giftCard,Boolean,Boolean,SCALAR,,Whether the product is a gift card.
+ProductCreateInput,giftCardTemplateSuffix,ProductCreateInput.giftCardTemplateSuffix,String,String,SCALAR,,The [theme template](https://shopify.dev/docs/storefronts/themes/architecture/templates) that's used when customers view a gift card in a store.
+ProductCreateInput,handle,ProductCreateInput.handle,String,String,SCALAR,,"A unique, human-readable string that's used to identify the product in URLs. A handle can contain letters, hyphens (`-`), and numbers, but no spaces.
+If no handle is explicitly provided, then the title is used to construct the product's handle.
+For example, if a product is titled ""Black Sunglasses"" and no handle is provided, then the handle `black-sunglasses` is generated (unless that handle
+is already taken, in which case a suffix is added to make the handle unique)."
+ProductCreateInput,metafields,ProductCreateInput.metafields,[MetafieldInput!],MetafieldInput,INPUT_OBJECT,,"The [custom fields](https://shopify.dev/docs/apps/build/custom-data) to associate with the product
+for the purposes of adding and storing additional information."
+ProductCreateInput,productOptions,ProductCreateInput.productOptions,[OptionCreateInput!],OptionCreateInput,INPUT_OBJECT,,A list of product options and option values. Maximum product options: three. There's no limit on the number of option values.
+ProductCreateInput,productType,ProductCreateInput.productType,String,String,SCALAR,,"The [product type](https://help.shopify.com/manual/products/details/product-type)
+that merchants define."
+ProductCreateInput,requiresSellingPlan,ProductCreateInput.requiresSellingPlan,Boolean,Boolean,SCALAR,,"Whether the product can only be purchased with
+a [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans).
+Products that are sold on subscription (`requiresSellingPlan: true`) can be updated only for online stores.
+If you update a product to be subscription-only (`requiresSellingPlan:false`), then the product is unpublished from all channels except the online store."
+ProductCreateInput,seo,ProductCreateInput.seo,SEOInput,SEOInput,INPUT_OBJECT,,"The [SEO title and description](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords)
+that are associated with a product."
+ProductCreateInput,status,ProductCreateInput.status,ProductStatus,ProductStatus,ENUM,,"The [product status](https://help.shopify.com/manual/products/details/product-details-page#product-status),
+which controls visibility across all sales channels."
+ProductCreateInput,tags,ProductCreateInput.tags,[String!],String,SCALAR,,"A list of searchable keywords that are
+associated with the product. For example, a merchant might apply the `sports`
+and `summer` tags to products that are associated with sportwear for summer.
+
+Updating `tags` overwrites any existing tags that were previously added to the product.
+To add new tags without overwriting existing tags, use the
+[`tagsAdd`](https://shopify.dev/api/admin-graphql/latest/mutations/tagsadd)
+mutation."
+ProductCreateInput,templateSuffix,ProductCreateInput.templateSuffix,String,String,SCALAR,,The [theme template](https://shopify.dev/docs/storefronts/themes/architecture/templates) that's used when customers view a product in a store.
+ProductCreateInput,title,ProductCreateInput.title,String,String,SCALAR,,"The name for the product that displays to customers. If no handle is explicitly provided, then the title is used to construct the product's handle.
+For example, if a product is titled ""Black Sunglasses"" and no handle is provided, then the handle `black-sunglasses` is generated."
+ProductCreateInput,vendor,ProductCreateInput.vendor,String,String,SCALAR,,The name of the product's vendor.
+ProductVariantsBulkInput,barcode,ProductVariantsBulkInput.barcode,String,String,SCALAR,,The value of the barcode associated with the product variant.
+ProductVariantsBulkInput,compareAtPrice,ProductVariantsBulkInput.compareAtPrice,Money,Money,SCALAR,,The compare-at price of the variant.
+ProductVariantsBulkInput,id,ProductVariantsBulkInput.id,ID,ID,SCALAR,,Specifies the product variant to update or delete.
+ProductVariantsBulkInput,inventoryItem,ProductVariantsBulkInput.inventoryItem,InventoryItemInput,InventoryItemInput,INPUT_OBJECT,,"The inventory item associated with the variant, used for unit cost."
+ProductVariantsBulkInput,inventoryPolicy,ProductVariantsBulkInput.inventoryPolicy,ProductVariantInventoryPolicy,ProductVariantInventoryPolicy,ENUM,,Whether customers are allowed to place an order for the variant when it's out of stock. Defaults to `DENY`.
+ProductVariantsBulkInput,inventoryQuantities,ProductVariantsBulkInput.inventoryQuantities,[InventoryLevelInput!],InventoryLevelInput,INPUT_OBJECT,,"The inventory quantities at each location where the variant is stocked. The number of elements
+in the array of inventory quantities can't exceed the amount specified for the plan.
+Supported as input with the `productVariantsBulkCreate` mutation only."
+ProductVariantsBulkInput,mediaId,ProductVariantsBulkInput.mediaId,ID,ID,SCALAR,,The ID of the media that's associated with the variant.
+ProductVariantsBulkInput,mediaSrc,ProductVariantsBulkInput.mediaSrc,[String!],String,SCALAR,,The URL of the media to associate with the variant.
+ProductVariantsBulkInput,metafields,ProductVariantsBulkInput.metafields,[MetafieldInput!],MetafieldInput,INPUT_OBJECT,,The additional customizable information about the product variant.
+ProductVariantsBulkInput,optionValues,ProductVariantsBulkInput.optionValues,[VariantOptionValueInput!],VariantOptionValueInput,INPUT_OBJECT,,The custom properties that a shop owner uses to define product variants.
+ProductVariantsBulkInput,price,ProductVariantsBulkInput.price,Money,Money,SCALAR,,The price of the variant.
+ProductVariantsBulkInput,requiresComponents,ProductVariantsBulkInput.requiresComponents,Boolean,Boolean,SCALAR,,"Whether a product variant requires components. The default value is `false`.
+If `true`, then the product variant can only be purchased as a parent bundle with components and it will be
+omitted from channels that don't support bundles."
+ProductVariantsBulkInput,showUnitPrice,ProductVariantsBulkInput.showUnitPrice,Boolean,Boolean,SCALAR,,Whether the unit price should be shown for this product variant.
+ProductVariantsBulkInput,taxCode,ProductVariantsBulkInput.taxCode,String,String,SCALAR,,The tax code associated with the variant.
+ProductVariantsBulkInput,taxable,ProductVariantsBulkInput.taxable,Boolean,Boolean,SCALAR,,Whether the variant is taxable.
+ProductVariantsBulkInput,unitPriceMeasurement,ProductVariantsBulkInput.unitPriceMeasurement,UnitPriceMeasurementInput,UnitPriceMeasurementInput,INPUT_OBJECT,,The unit price measurement for the product variant.
+InventoryItemInput,cost,InventoryItemInput.cost,Decimal,Decimal,SCALAR,,"Unit cost associated with the inventory item, the currency is the shop's default currency."
+InventoryItemInput,countryCodeOfOrigin,InventoryItemInput.countryCodeOfOrigin,CountryCode,CountryCode,ENUM,,"The country where the item was manufactured or produced, specified using the standard two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code."
+InventoryItemInput,countryHarmonizedSystemCodes,InventoryItemInput.countryHarmonizedSystemCodes,[CountryHarmonizedSystemCodeInput!],CountryHarmonizedSystemCodeInput,INPUT_OBJECT,,List of country-specific harmonized system codes.
+InventoryItemInput,harmonizedSystemCode,InventoryItemInput.harmonizedSystemCode,String,String,SCALAR,,The harmonized system code of the inventory item. This must be a number between 6 and 13 digits.
+InventoryItemInput,measurement,InventoryItemInput.measurement,InventoryItemMeasurementInput,InventoryItemMeasurementInput,INPUT_OBJECT,,The measurements of an inventory item.
+InventoryItemInput,provinceCodeOfOrigin,InventoryItemInput.provinceCodeOfOrigin,String,String,SCALAR,,"The province where the item was manufactured or produced, specified using the standard two-letter [ISO 3166-2 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-2) province code."
+InventoryItemInput,requiresShipping,InventoryItemInput.requiresShipping,Boolean,Boolean,SCALAR,,"Whether the inventory item needs to be physically shipped to the customer. Items that require shipping are physical products, while digital goods and services typically don't require shipping and can be fulfilled electronically."
+InventoryItemInput,sku,InventoryItemInput.sku,String,String,SCALAR,,The SKU (stock keeping unit) of the inventory item.
+InventoryItemInput,tracked,InventoryItemInput.tracked,Boolean,Boolean,SCALAR,,Whether the inventory item is tracked.
+InventoryItemMeasurementInput,shippingPackageId,InventoryItemMeasurementInput.shippingPackageId,ID,ID,SCALAR,,Shipping package associated with inventory item.
+InventoryItemMeasurementInput,weight,InventoryItemMeasurementInput.weight,WeightInput,WeightInput,INPUT_OBJECT,,The weight of the inventory item.
+InventoryLevelInput,availableQuantity,InventoryLevelInput.availableQuantity,Int!,Int,SCALAR,,The available quantity of an inventory item at a location.
+InventoryLevelInput,locationId,InventoryLevelInput.locationId,ID!,ID,SCALAR,,The ID of a location associated with the inventory level.
+MetafieldInput,id,MetafieldInput.id,ID,ID,SCALAR,,The unique ID of the metafield. Using `namespace` and `key` is preferred for creating and updating.
+MetafieldInput,key,MetafieldInput.key,String,String,SCALAR,,"The unique identifier for a metafield within its namespace.
+
+Required when creating a metafield, but optional when updating. Used to help identify the metafield when
+updating, but can't be updated itself.
+
+Must be 2-64 characters long and can contain alphanumeric, hyphen, and underscore characters."
+MetafieldInput,namespace,MetafieldInput.namespace,String,String,SCALAR,,"The container for a group of metafields that the metafield is or will be associated with. Used in tandem with
+`key` to lookup a metafield on a resource, preventing conflicts with other metafields with the same `key`.
+
+Required when creating a metafield, but optional when updating. Used to help identify the metafield when
+updating, but can't be updated itself.
+
+Must be 3-255 characters long and can contain alphanumeric, hyphen, and underscore characters."
+MetafieldInput,type,MetafieldInput.type,String,String,SCALAR,,"The type of data that's stored in the metafield.
+Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).
+
+Required when creating or updating a metafield without a definition."
+MetafieldInput,value,MetafieldInput.value,String,String,SCALAR,,"The data stored in the metafield. Always stored as a string, regardless of the metafield's type."
+CreateMediaInput,alt,CreateMediaInput.alt,String,String,SCALAR,,The alt text associated with the media.
+CreateMediaInput,mediaContentType,CreateMediaInput.mediaContentType,MediaContentType!,MediaContentType,ENUM,,The media content type.
+CreateMediaInput,originalSource,CreateMediaInput.originalSource,String!,String,SCALAR,,The original source of the media object. This might be an external URL or a staged upload URL.
+OptionCreateInput,linkedMetafield,OptionCreateInput.linkedMetafield,LinkedMetafieldCreateInput,LinkedMetafieldCreateInput,INPUT_OBJECT,,Specifies the metafield the option is linked to.
+OptionCreateInput,name,OptionCreateInput.name,String,String,SCALAR,,Name of the option.
+OptionCreateInput,position,OptionCreateInput.position,Int,Int,SCALAR,,Position of the option.
+OptionCreateInput,values,OptionCreateInput.values,[OptionValueCreateInput!],OptionValueCreateInput,INPUT_OBJECT,,Values associated with the option.
+OptionValueCreateInput,linkedMetafieldValue,OptionValueCreateInput.linkedMetafieldValue,String,String,SCALAR,,Metafield value associated with an option.
+OptionValueCreateInput,name,OptionValueCreateInput.name,String,String,SCALAR,,Value associated with an option.
+ProductClaimOwnershipInput,bundles,ProductClaimOwnershipInput.bundles,Boolean,Boolean,SCALAR,,"Claiming ownership of bundles lets the app render a custom UI for the bundles' card on the
+products details page in the Shopify admin.
+
+Bundle ownership can only be claimed when creating the product. If you create `ProductVariantComponents`
+in any of its product variants, then the bundle ownership is automatically assigned to the app making the call.
+
+[Learn more](https://shopify.dev/docs/apps/selling-strategies/bundles/product-config)."
+SEOInput,description,SEOInput.description,String,String,SCALAR,,SEO description of the product.
+SEOInput,title,SEOInput.title,String,String,SCALAR,,SEO title of the product.
+UnitPriceMeasurementInput,quantityUnit,UnitPriceMeasurementInput.quantityUnit,UnitPriceMeasurementMeasuredUnit,UnitPriceMeasurementMeasuredUnit,ENUM,,The quantity unit for the unit price measurement.
+UnitPriceMeasurementInput,quantityValue,UnitPriceMeasurementInput.quantityValue,Float,Float,SCALAR,,The quantity value for the unit price measurement.
+UnitPriceMeasurementInput,referenceUnit,UnitPriceMeasurementInput.referenceUnit,UnitPriceMeasurementMeasuredUnit,UnitPriceMeasurementMeasuredUnit,ENUM,,The reference unit for the unit price measurement.
+UnitPriceMeasurementInput,referenceValue,UnitPriceMeasurementInput.referenceValue,Int,Int,SCALAR,,The reference value for the unit price measurement.
+VariantOptionValueInput,id,VariantOptionValueInput.id,ID,ID,SCALAR,,Specifies the product option value by ID.
+VariantOptionValueInput,linkedMetafieldValue,VariantOptionValueInput.linkedMetafieldValue,String,String,SCALAR,,Metafield value associated with an option.
+VariantOptionValueInput,name,VariantOptionValueInput.name,String,String,SCALAR,,Specifies the product option value by name.
+VariantOptionValueInput,optionId,VariantOptionValueInput.optionId,ID,ID,SCALAR,,Specifies the product option by ID.
+VariantOptionValueInput,optionName,VariantOptionValueInput.optionName,String,String,SCALAR,,Specifies the product option by name.
