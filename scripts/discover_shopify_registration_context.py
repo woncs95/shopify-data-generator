@@ -10,6 +10,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from shopify_data_generator.paths import DATA_DIR, ENV_FILE
+from shopify_data_generator.metafield_saving import load_definitions
 
 
 API_VERSION = "2025-10"
@@ -170,6 +171,7 @@ def main() -> None:
 
     host = normalize_shopify_host(store)
     metafields = fetch_paginated(host, token, METAFIELD_DEFINITIONS_QUERY, "metafieldDefinitions")
+    constraints = load_definitions(lambda q, v: shopify_graphql(host, token, q, v))
     tags = fetch_paginated(host, token, PRODUCT_TAGS_QUERY, "productTags")
     products = fetch_paginated(host, token, PRODUCT_CATALOG_QUERY, "products")
     locations = shopify_graphql(host, token, LOCATIONS_QUERY, {"first": 50})["locations"]["nodes"]
@@ -186,6 +188,7 @@ def main() -> None:
                 "admin_access": (item.get("access") or {}).get("admin") or "",
                 "storefront_access": (item.get("access") or {}).get("storefront") or "",
                 "validations": json.dumps(item.get("validations") or [], ensure_ascii=False),
+                "constraints": json.dumps(constraints[f"{item['namespace']}.{item['key']}"].get("constraints"), ensure_ascii=False),
                 "description": item.get("description") or "",
             }
         )
@@ -232,6 +235,7 @@ def main() -> None:
             "admin_access",
             "storefront_access",
             "validations",
+            "constraints",
             "description",
         ],
     )
